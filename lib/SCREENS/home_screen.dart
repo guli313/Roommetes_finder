@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile_screen.dart';
+import 'setting_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,7 +8,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Roommates")),
+      appBar: AppBar(
+        title: const Text("Roommates"),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SettingsScreen(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+
       body: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
@@ -23,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     "gender": "Male",
                     "country": "Pakistan",
                     "budget": "20,000",
-                  }), // ✅ Map pass kiya
+                  }),
                 ),
               );
             },
